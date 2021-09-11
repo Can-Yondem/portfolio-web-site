@@ -4,16 +4,13 @@ import HeroSection from "../components/HeroSection"
 
 export default function Home() {
   return (
-    <div className="">
+    <div>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-
-
       <HeroSection />
-      
     </div>
   )
 }

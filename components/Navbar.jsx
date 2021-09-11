@@ -7,22 +7,22 @@ export default function Home() {
         <div>LOGO</div>
         <div>
             <ul className="flex gap-x-7 font-bold text-white ">
-                <li>
+                <li className="hover:text-blue-400 transition ease-in-out duration-300">
                     <Link href="/">
                         <a>ANA SAYFA</a>
                     </Link>
                 </li>
-                <li>
+                <li className="hover:text-blue-400 transition ease-in-out duration-300">
                     <Link href="/">
                         <a>HAKKIMDA</a>
                     </Link>
                 </li>
-                <li>
+                <li className="hover:text-blue-400 transition ease-in-out duration-300">
                     <Link href="/">
                         <a>PROJELERİM</a>
                     </Link>
                 </li>
-                <li>
+                <li className="hover:text-blue-400 transition ease-in-out duration-300">
                     <Link href="/">
                         <a>İLETİŞİM</a>
                     </Link>
