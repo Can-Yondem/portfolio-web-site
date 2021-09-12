@@ -4,58 +4,57 @@ import Link from "next/link";
 import Typical from 'react-typical';
 import HerosectionPhoto from "../assests/img/herosection.jpg";
 import Avatar from "../assests/img/avatar.jpg";
-import { FaFacebookF } from 'react-icons/fa';
-import { AiOutlineTwitter } from 'react-icons/ai';
+import { SiInstagram } from 'react-icons/si';
+import { GoMarkGithub } from 'react-icons/go';
 import { FaLinkedinIn } from 'react-icons/fa';
-import { AiOutlineGoogle } from 'react-icons/ai';
-import { SiPinterest } from 'react-icons/si';
+import {motion} from "framer-motion";
 
 export default function Home() {
+  const list = {
+    visible: { opacity: 1 },
+    hidden: { opacity: 0 },
+  }
+  
+  const item = {
+    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: -300 },
+  }
   return (
     <section >
-      <div className="w-full h-auto">
+      <div className="w-full">
         <Image src={HerosectionPhoto} alt="herosection photo" layout="fill" quality="100" objectFit="cover" />
         <div className="w-full min-h-screen absolute bg-black top-0 bg-opacity-50 flex items-center justify-center text-center">
             <div>
-                <div className="border-4 rounded-full w-48 h-48 mx-auto ">
+                <motion.div className="border-4 rounded-full w-48 h-48 mx-auto" animate={{x:0}} initial={{x: 900}}>
                   <Image src={Avatar} className="rounded-full" width="208" height="208" />
-                </div>
-                <p className="font-bold text-5xl text-white mt-4">Onur Can Yöndem</p>
-                <p className="text-xl font-thin text-white flex justify-center gap-x-2 mt-2 mb-6">
+                </motion.div>
+                <motion.p className="font-bold text-5xl text-white mt-4" animate={{x:0}} initial={{x: -900}}>Onur Can Yöndem</motion.p>
+                <motion.p className="text-xl font-thin text-white flex justify-center gap-x-2 mt-2 mb-6" animate={{x:0}} initial={{x: -900}}>
                   I'm a
                   <Typical
-                  steps={[' front-end developer.', 1000,' graphics designer.', 1000,' lorem ipsum', 1000]}
+                  steps={['front-end developer 💻', 2000]}
                   loop={Infinity}
                   wrapper="b"
+                  className="text-green-500"
                   />
-                </p>
-                <ul className="flex gap-4 mt-2 text-white justify-center">
-                  <li className="border-2 border-gray-100 rounded-full p-2">
-                    <Link href="/">
-                      <a><FaFacebookF /></a>
+                </motion.p>
+                <motion.ul className="flex gap-4 mt-2 text-white justify-center" animate="visible" initial="hidden" variants={list}>
+                  <motion.li className="border-2 border-gray-100 rounded-full p-2" whileHover={{ scale: 1.2,rotateZ : 360, borderColor:"#f211ab"}} variants={item}>
+                    <Link href="https://www.instagram.com/onurcn22/">
+                      <a target="blank"><SiInstagram className="text-2xl"/></a>
                     </Link>
-                  </li>
-                  <li className="border-2 border-gray-100 rounded-full p-2">
-                    <Link href="/">
-                      <a><AiOutlineTwitter /></a>
+                  </motion.li>
+                  <motion.li className="border-2 border-gray-100 rounded-full p-2" whileHover={{ scale: 1.2,rotateZ : 360,borderColor:"#454344"}} variants={item}>
+                    <Link href="https://github.com/Can-Yondem">
+                      <a target="blank"><GoMarkGithub className="text-2xl"/></a>
                     </Link>
-                  </li>
-                  <li className="border-2 border-gray-100 rounded-full p-2">
-                    <Link href="/">
-                      <a><FaLinkedinIn /></a>
+                  </motion.li>
+                  <motion.li className="border-2 border-gray-100 rounded-full p-2" whileHover={{ scale: 1.2,rotateZ : 360,borderColor:"#2058FF"}} variants={item}>
+                    <Link href="https://www.linkedin.com/in/onur-y%C3%B6ndem-9107121a0/">
+                      <a target="blank"><FaLinkedinIn className="text-2xl"/></a>
                     </Link>
-                  </li>
-                  <li className="border-2 border-gray-100 rounded-full p-2">
-                    <Link href="/">
-                      <a><AiOutlineGoogle /></a>
-                    </Link>
-                  </li>
-                  <li className="border-2 border-gray-100 rounded-full p-2">
-                    <Link href="/">
-                      <a><SiPinterest /></a>
-                    </Link>
-                  </li>
-                </ul>
+                  </motion.li>
+                </motion.ul>
             </div>
         </div >
       </div>
