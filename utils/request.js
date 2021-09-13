@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "https://strapi-portfolio-api-ex.herokuapp.com/";
+const URL = "https://limitless-castle-16392.herokuapp.com";
 
 const request = {
     getPeople: axios.get(`${URL}/people`),
