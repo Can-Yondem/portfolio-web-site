@@ -48,27 +48,27 @@ export default function HamburgerMenu() {
                     <ul className="flex flex-col mt-5 bg-gray-600 p-4 text-white font-bold rounded-lg text-center ">
                         <li className="p-3 border-b-2 border-gray-50">
                             <Link href="/">
-                                <a>ANA SAYFA</a>
+                                <a>HOME</a>
                             </Link>
                         </li>
                         <li className="p-3 border-b-2 border-gray-50">
                             <Link href="/about">
-                                <a>HAKKIMDA</a>
+                                <a>ABOUT</a>
                             </Link>
                         </li>
                         <li className="p-3 border-b-2 border-gray-50">
-                            <Link href="/">
-                                <a>YETENEKLERİM</a>
+                            <Link href="/skills">
+                                <a>SKİLL</a>
                             </Link>
                         </li>
                         <li className="p-3 border-b-2 border-gray-50">
-                            <Link href="/">
-                                <a>PROJELERİM</a>
+                            <Link href="/projects">
+                                <a>PROJECT</a>
                             </Link>
                         </li>
                         <li className="p-3">
-                            <Link href="/">
-                                <a>İLETİŞİM</a>
+                            <Link href="/contact">
+                                <a>CONTACT</a>
                             </Link>
                         </li>
                     </ul> : null}

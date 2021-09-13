@@ -12,27 +12,27 @@ export default function Home({page,textcolor}) {
                 <ul className={`flex gap-x-7 font-bold ${textcolor}`}>
                     <li className="hover:text-green-400 transition ease-in-out duration-300 md:block hidden">
                         <Link href="/">
-                            <a>ANA SAYFA</a>
+                            <a>HOME</a>
                         </Link>
                     </li>
                     <li className="hover:text-green-400 transition ease-in-out duration-300 md:block hidden">
                         <Link href="/about">
-                            <a>HAKKIMDA</a>
+                            <a>ABOUT</a>
                         </Link>
                     </li>
                     <li className="hover:text-green-400 transition ease-in-out duration-300 md:block hidden">
                         <Link href="skills">
-                            <a>YETENEKLERİM</a>
+                            <a>SKİLLS</a>
                         </Link>
                     </li>
                     <li className="hover:text-green-400 transition ease-in-out duration-300 md:block hidden">
                         <Link href="projects">
-                            <a>PROJELERİM</a>
+                            <a>PROJECTS</a>
                         </Link>
                     </li>
                     <li className="hover:text-green-400 transition ease-in-out duration-300 md:block hidden">
                         <Link href="contact">
-                            <a>İLETİŞİM</a>
+                            <a>CONTACT</a>
                         </Link>
                     </li>
                 </ul>
