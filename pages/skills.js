@@ -29,7 +29,7 @@ export default function Home() {
   useEffect(() => {
     controls.start(i => ({
       x:[-1500,0],
-      transition: { delay: i * 0.2 },
+      transition: { delay: i * 0.3 },
     }))
   },)
 
