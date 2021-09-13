@@ -42,7 +42,7 @@ export default function Home() {
     <section >
       <div className="w-full">
         <Image src={HerosectionPhoto} alt="herosection photo" layout="fill" quality="100" objectFit="cover" />
-        <div className="w-full min-h-screen absolute bg-black top-0 bg-opacity-50 flex items-center justify-center text-center overflow-hidden">
+        <div className="w-full min-h-full absolute bg-black top-0 bg-opacity-50 flex items-center justify-center text-center">
             <div> 
                 <motion.div className="border-4 rounded-full w-48 h-48 mx-auto" animate={{x:0}} initial={{x: 900}}>
                   <img src={`https://limitless-castle-16392.herokuapp.com${data.img_1[0].url}`} alt="" className="rounded-full w-48"/>
