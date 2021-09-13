@@ -10,18 +10,16 @@ import request from "../utils/request";
 
 export default function Home() {
   const [skills, setSkills] = useState([]);
-  const [loading,setLoading] = useState(true);
+
   const controls = useAnimation()
 
-  let img = "";
+
 
 
   useEffect(() => {
     const fetchData = async () => {
-    setLoading(true);
     const response = await request.getSkills;
     setSkills(response.data);
-    setLoading(false);
     }
     fetchData();
   },[]);
@@ -32,6 +30,8 @@ export default function Home() {
       transition: { delay: i * 0.3 },
     }))
   },)
+
+  if (!skills) return null;
 
 
   return (
@@ -48,13 +48,9 @@ export default function Home() {
         <div className="flex lg:flex-row flex-col mt-20 container mx-auto ">
           <ul className="lg:w-6/12 lg:mb-0 mb-20 grid grid-cols-3 sm:px-0 px-10 gap-y-4 gap-x-5 2xl:gap-x-28 xl:gap-x-20 lg:gap-x-14 md:gap-x-8 sm:gap-x-2 2xl:gap-y-12 xl:gap-y-10 lg:gap-y-8 md:gap-y-6 sm:gap-y-4 content-center justify-items-center">
             {skills.map((item) => {
-                if(!loading) {
-                  img = item.skill_img.url
-                }
-  
               return(
                 <motion.li key={item.id} custom={item.id} animate={controls}>
-                  <img src={`https://limitless-castle-16392.herokuapp.com${img}`}/>
+                  <img src={`https://limitless-castle-16392.herokuapp.com${item.skill_img[0].url}`}/>
                 </motion.li>
               )
             })}

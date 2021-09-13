@@ -7,25 +7,18 @@ import {useState,useEffect} from "react";
 import request from "../utils/request"
 
 export default function About() {
-    const [data, setData] = useState({});
-    const [loading,setLoading] = useState(true);
-
-    let img = "";
+    const [data, setData] = useState(null);
 
 
     useEffect(() => {
         const fetchData = async () => {
-        setLoading(true);
         const response = await request.getPeople;
         setData(response.data[0]);
-        setLoading(false);
         }
         fetchData();
     },[]);
 
-    if(!loading) {
-        img = data.img_2.url
-      }
+    if (!data) return null;
 
   return (
     <div className="">
@@ -38,10 +31,10 @@ export default function About() {
             <Navbar />
         </div>
                 
-        <div className="flex container mx-auto items-center content-center min-h-screen lg:flex-row flex-col ">
-            <div className="lg:w-2/6 lg:mr-20 my-10">
+        <div className="flex container sm:mx-auto items-center content-center min-h-screen lg:flex-row flex-col my-3">
+            <div className="lg:w-2/6 lg:mr-20 my-7">
                 <div className="rounded-full overflow-hidden sm:w-96 mx-auto w-80">
-                    <img src={`https://limitless-castle-16392.herokuapp.com${img}`} alt="" />
+                    <img src={`https://limitless-castle-16392.herokuapp.com${data.img_2[0].url}`} alt="" />
                 </div>
             </div>
             <div className="w-4/6 ">
@@ -54,7 +47,7 @@ export default function About() {
                     {data.about_description}
                 </p>
                 <div className="grid md:grid-cols-2 grid-cols-1 gap-3 mt-6">
-                    <span className="font-bold text-black text-lg">Name: <span className="font-medium text-gray-400">{data.name}</span></span>
+                    <span className="font-bold text-black text-lg">Name: <span className="font-medium text-gray-400">{data.fullname}</span></span>
                     <span className="font-bold text-black text-lg">Age: <span className="font-medium text-gray-400">{data.age}</span></span>
                     <span className="font-bold text-black text-lg">Email: <span className="font-medium text-gray-400">{data.email}</span></span>
                     <span className="font-bold text-black text-lg">Phone: <span className="font-medium text-gray-400">{data.phone}</span></span>

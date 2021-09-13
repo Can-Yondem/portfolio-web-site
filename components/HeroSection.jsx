@@ -16,25 +16,18 @@ import React from "react";
 
 
 export default function Home() {
-  const [data , setData] = useState("");
-  const [loading,setLoading] = useState(true);
-
-  let img = "";
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
       const response = await request.getPeople;
       setData(response.data[0]);
-      setLoading(false);
     }
     fetchData();
   },[]);
 
-  if(!loading) {
-    img = data.img_1.url
-  }
-  
+  if (!data) return null;
+
   const list = {
     visible: { opacity: 1 },
     hidden: { opacity: 0 },
@@ -52,14 +45,15 @@ export default function Home() {
         <div className="w-full min-h-screen absolute bg-black top-0 bg-opacity-50 flex items-center justify-center text-center">
             <div> 
                 <motion.div className="border-4 rounded-full w-48 h-48 mx-auto" animate={{x:0}} initial={{x: 900}}>
-                  <img src={`https://limitless-castle-16392.herokuapp.com${img}`} alt="" className="rounded-full w-48"/>
+                  <img src={`https://limitless-castle-16392.herokuapp.com${data.img_1[0].url}`} alt="" className="rounded-full w-48"/>
                 </motion.div>
                 <motion.p className="font-bold text-5xl text-white mt-4" animate={{x:0}} initial={{x: -900}}>{data.fullname}</motion.p>
                 <motion.p className="text-xl font-thin text-white flex justify-center gap-x-2 mt-2 mb-6" animate={{x:0}} initial={{x: -900}}>
                   I'm a
                   <Typical
-                  steps={[`${data.work}`, 3000]}
+                  steps={[`${data.work} 💻` ,2000, "open sourcer ✔", 2000]}
                   wrapper="b"
+                  loop={Infinity}
                   className="text-green-500"
                   />
                 </motion.p>
