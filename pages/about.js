@@ -41,7 +41,7 @@ export default function About() {
         <div className="flex container mx-auto items-center content-center min-h-screen lg:flex-row flex-col ">
             <div className="lg:w-2/6 lg:mr-20 my-10">
                 <div className="rounded-full overflow-hidden sm:w-96 mx-auto w-80">
-                    <img src={`http://localhost:1337${img}`} alt="" />
+                    <img src={`https://limitless-castle-16392.herokuapp.com${img}`} alt="" />
                 </div>
             </div>
             <div className="w-4/6 ">

@@ -54,7 +54,7 @@ export default function Home() {
   
               return(
                 <motion.li key={item.id} custom={item.id} animate={controls}>
-                  <img src={`http://localhost:1337${img}`}/>
+                  <img src={`https://limitless-castle-16392.herokuapp.com${img}`}/>
                 </motion.li>
               )
             })}
