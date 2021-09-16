@@ -4,6 +4,7 @@ import {motion,useAnimation} from "framer-motion";
 import ActivityCalendar from "react-github-calendar";
 import {useState,useEffect} from "react";
 import request from "../utils/request";
+import { data } from 'autoprefixer';
 
 
 
@@ -47,9 +48,9 @@ export default function Home() {
  
         <div className="flex lg:flex-row flex-col mt-20 container mx-auto ">
           <ul className="lg:w-6/12 lg:mb-0 mb-20 grid grid-cols-3 sm:px-0 px-10 gap-y-4 gap-x-5 2xl:gap-x-28 xl:gap-x-20 lg:gap-x-14 md:gap-x-8 sm:gap-x-2 2xl:gap-y-12 xl:gap-y-10 lg:gap-y-8 md:gap-y-6 sm:gap-y-4 content-center justify-items-center">
-            {skills.map((item) => {
+            {skills.map((item,index) => {
               return(
-                <motion.li key={item.id} custom={item.id} animate={controls}>
+                <motion.li key={index} custom={index} animate={controls}>
                   <img src={item.skill_img[0].url}/>
                 </motion.li>
               )
