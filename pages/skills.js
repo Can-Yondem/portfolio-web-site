@@ -50,7 +50,7 @@ export default function Home() {
             {skills.map((item) => {
               return(
                 <motion.li key={item.id} custom={item.id} animate={controls}>
-                  <img src={item.skill_img[0].formats.url}/>
+                  <img src={item.skill_img[0].url}/>
                 </motion.li>
               )
             })}

@@ -34,7 +34,7 @@ export default function About() {
         <div className="flex container sm:mx-auto items-center  min-h-screen lg:flex-row flex-col my-3 ">
             <div className="lg:w-2/6 lg:mr-20 my-7">
                 <div className="rounded-full overflow-hidden sm:w-96 mx-auto w-80">
-                    <img src={data.img_2[0].formats.url} alt="" />
+                    <img src={data.img_2[0].url} alt="" />
                 </div>
             </div>
             <div className="w-4/6 ">
