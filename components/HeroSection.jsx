@@ -45,7 +45,7 @@ export default function Home() {
         <div className="w-full min-h-full absolute bg-black top-0 bg-opacity-50 flex items-center justify-center text-center">
             <div> 
                 <motion.div className="border-4 rounded-full w-48 h-48 mx-auto" animate={{x:0}} initial={{x: 900}}>
-                  <img src={`https://limitless-castle-16392.herokuapp.com${data.img_1[0].url}`} alt="" className="rounded-full w-48"/>
+                  <img src={data.img_1[0].formats.url} alt="" className="rounded-full w-48"/>
                 </motion.div>
                 <motion.p className="font-bold sm:text-5xl text-3xl text-white mt-4" animate={{x:0}} initial={{x: -900}}>{data.fullname}</motion.p>
                 <motion.p className="text-xl font-thin text-white flex justify-center gap-x-2 mt-2 mb-6" animate={{x:0}} initial={{x: -900}}>
