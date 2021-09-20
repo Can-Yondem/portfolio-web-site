@@ -1,17 +1,16 @@
 import Head from 'next/head'
-import Navbar from "../components/Navbar"
 import HeroSection from "../components/HeroSection"
-
+import {useContext} from "react";
+import LangContext from '../context/LangContext';
 
 export default function Home() {
-
+  const {lang} = useContext(LangContext);
   return (
     <div>
       <Head>
-        <title>Home</title>
+        <title>{lang.home}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar page="main" textcolor="text-white"/>
       <HeroSection />
     </div>
   )

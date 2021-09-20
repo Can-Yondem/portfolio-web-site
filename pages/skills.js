@@ -1,54 +1,34 @@
 import Head from 'next/head';
-import Navbar from "../components/Navbar";
 import {motion,useAnimation} from "framer-motion";
 import ActivityCalendar from "react-github-calendar";
-import {useState,useEffect} from "react";
-import request from "../utils/request";
-import { data } from 'autoprefixer';
+import {useEffect, useContext} from "react";
+import LangContext from '../context/LangContext';
+
 
 
 
 
 export default function Home() {
-  const [skills, setSkills] = useState([]);
-
-  const controls = useAnimation()
-
-
-
-
-  useEffect(() => {
-    const fetchData = async () => {
-    const response = await request.getSkills;
-    setSkills(response.data);
-    }
-    fetchData();
-  },[]);
+  const controls = useAnimation();
+  const {lang, skillData} = useContext(LangContext);
 
   useEffect(() => {
     controls.start(i => ({
       x:[-1500,0],
       transition: { delay: i * 0.3 },
     }))
-  },)
-
-  if (!skills) return null;
-
+  },);
 
   return (
-    <div className="">
+    <div>
         <Head>
-            <title>Skills</title>
+            <title>{lang.skills}</title>
             <link rel="icon" href="/favicon.ico" />
         </Head>
-
-        <div className="border-b-2 shadow-lg">
-            <Navbar />
-        </div>
  
         <div className="flex lg:flex-row flex-col mt-20 container mx-auto ">
           <ul className="lg:w-6/12 lg:mb-0 mb-20 grid grid-cols-3 sm:px-0 px-10 gap-y-4 gap-x-5 2xl:gap-x-28 xl:gap-x-20 lg:gap-x-14 md:gap-x-8 sm:gap-x-2 2xl:gap-y-12 xl:gap-y-10 lg:gap-y-8 md:gap-y-6 sm:gap-y-4 content-center justify-items-center">
-            {skills.map((item,index) => {
+            {skillData.map((item,index) => {
               return(
                 <motion.li key={index} custom={index} animate={controls}>
                   <img src={item.skill_img[0].url}/>
@@ -57,7 +37,7 @@ export default function Home() {
             })}
             </ul>
           <div className="lg:w-6/12 flex flex-col lg:pl-20 gap-y-5 text-gray-500 font-normal sm:px-0 px-10">
-            {skills.map((item) => {
+            {skillData.map((item) => {
               return(
                 <div className=" w-full">
                   <div className="flex justify-between mx-3"><span>{item.skill_name}</span> <span>%{item.percent_complete}</span></div>
