@@ -20,6 +20,9 @@ export default function Home() {
         <Head>
             <title>{lang.project}</title>
             <link rel="icon" href="/favicon.ico" />
+            <meta charSet="utf-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <meta name="description" content="My portfolio web site"/>
         </Head>
 
         <div className="container mx-auto min-h-screen grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 content-center sm:gap-7 gap-14">
