@@ -20,7 +20,7 @@ export default function About() {
     return (
         <div>
             <Head>
-                <title>{lang.contact}</title>
+                <title>{lang.about}</title>
                 <link rel="icon" href="/favicon.ico" />
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
