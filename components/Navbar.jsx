@@ -1,15 +1,21 @@
 import Link from 'next/link';
 import HamburgerMenu from "./HamburgerMenu";
 import { motion } from "framer-motion";
-import { useContext } from 'react';
-import LangContext from '../context/LangContext';
 import { useRouter } from "next/router"
-
+import { useSelector, useDispatch } from 'react-redux';
+import { setLanguage } from "../redux/people/peopleSlice";
 
 
 export default function Home({ page, textcolor }) {
-    const { setLanguage, lang } = useContext(LangContext);
+    const lang = useSelector((state) => state.fetchData.language);
     const router = useRouter();
+    const dispatch = useDispatch();
+
+    const changeLanguage = (language) => {
+        dispatch(setLanguage(language))
+    }
+
+
 
     return (
         <>
@@ -42,7 +48,7 @@ export default function Home({ page, textcolor }) {
                             </Link>
                         </li>
                         <li>
-                            <select name="languages" id="languages" onChange={(e) => setLanguage(e.target.value)} className="bg-transparent text-gray-400 outline-none">
+                            <select name="languages" id="languages" onChange={(e) => changeLanguage(e.target.value)} className="bg-transparent text-gray-400 outline-none">
                                 <option value="tr">Türkçe</option>
                                 <option value="en">English</option>
                             </select>

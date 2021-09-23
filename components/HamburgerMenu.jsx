@@ -2,8 +2,9 @@ import { useState, useEffect, useContext } from 'react';
 import { FaHamburger } from 'react-icons/fa';
 import { motion } from "framer-motion";
 import Link from 'next/link';
-import LangContext from '../context/LangContext';
 import ReactCountryFlag from "react-country-flag"
+import { setLanguage } from "../redux/people/peopleSlice";
+import { useSelector, useDispatch } from 'react-redux';
 
 
 function useWindowSize() {
@@ -42,7 +43,13 @@ function useWindowSize() {
 export default function HamburgerMenu() {
   const size = useWindowSize();
   const [isActive, setIsActive] = useState(false);
-  const { setLanguage, lang } = useContext(LangContext);
+  const lang = useSelector((state) => state.fetchData.language);
+  const dispatch = useDispatch();
+
+  const changeLanguage = (language) => {
+    dispatch(setLanguage(language))
+}
+
   return (
     <div>
       <motion.div className="md:hidden ml-16 absolute z-10 flex" drag dragConstraints={{ left: 0, right: size.width - 160, top: 0, bottom: size.height - 60 }} onClick={() => setIsActive(!isActive)}>
@@ -75,13 +82,13 @@ export default function HamburgerMenu() {
               </Link>
             </li>
             <li className="flex justify-center items-center gap-4 mt-3">
-              <button onClick={() => setLanguage("en")}>
+              <button onClick={() => changeLanguage("en")}>
                 <ReactCountryFlag countryCode="GB" svg style={{
                   fontSize: '2em',
                   lineHeight: '2em',
                 }} />
               </button>
-              <button onClick={() => setLanguage("tr")}>
+              <button onClick={() => changeLanguage("tr")}>
                 <ReactCountryFlag countryCode="TR" svg style={{
                   fontSize: '2em',
                   lineHeight: '2em',

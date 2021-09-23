@@ -1,12 +1,20 @@
 import Head from 'next/head';
 import Link from "next/link";
-import {useEffect,useContext} from "react";
+import {useEffect} from "react";
 import {motion,useAnimation} from "framer-motion";
-import LangContext from '../context/LangContext';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchProjectsData } from "../redux/people/peopleSlice";
 
 export default function Home() {
     const controls = useAnimation();
-    const {lang, projectData} = useContext(LangContext);
+    const projectData = useSelector((state) => state.fetchData.projectsData);
+    const lang = useSelector((state) => state.fetchData.language);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(fetchProjectsData(lang.lang));
+    }, [dispatch,lang.lang]);
 
     useEffect(() => {
         controls.start(i => ({
@@ -14,6 +22,11 @@ export default function Home() {
           transition: { delay: i * 0.2 },
         }))
       },);
+    
+    if(!projectData) return null;
+
+
+
 
   return (
     <div>

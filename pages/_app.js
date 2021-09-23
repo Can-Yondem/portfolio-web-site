@@ -1,14 +1,17 @@
 import 'tailwindcss/tailwind.css'
-import { LangProvider } from "../context/LangContext"
 import Layout from '../components/Layout'
+import { Provider } from 'react-redux';
+import { store } from '../redux/store';
+
 
 function MyApp({ Component, pageProps }) {
+
   return (
-    <LangProvider>
+    <Provider store={store}>
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </LangProvider>
+    </Provider>
   )
 }
 

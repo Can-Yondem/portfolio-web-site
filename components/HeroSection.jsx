@@ -1,18 +1,28 @@
 import Head from 'next/head';
 import Image from "next/image";
 import Link from "next/link";
-import Typical, { type } from 'react-typical';
+import Typical from 'react-typical';
 import HerosectionPhoto from "../assests/img/herosection.jpg";
 import { SiInstagram } from 'react-icons/si';
 import { GoMarkGithub } from 'react-icons/go';
 import { FaLinkedinIn } from 'react-icons/fa';
 import { motion } from "framer-motion";
-import { useContext } from "react";
+import { useEffect } from "react";
 import React from "react";
-import LangContext from '../context/LangContext';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchPeopleData } from "../redux/people/peopleSlice";
+
 
 export default function HeroSection() {
-  const {peopleData} = useContext(LangContext);
+  const peopleData = useSelector((state) => state.fetchData.peopleData);
+  const dispatch = useDispatch();
+  const lang = useSelector((state) => state.fetchData.language);
+
+  useEffect(() => {
+    dispatch(fetchPeopleData(lang.lang));
+  }, [dispatch,lang.lang]);
+
+  if (!peopleData) return null;
 
   const list = {
     visible: { opacity: 1 },
