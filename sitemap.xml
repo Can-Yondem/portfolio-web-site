@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://portfolio-web-pearl.vercel.app/</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://portfolio-web-pearl.vercel.app/skills</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://portfolio-web-pearl.vercel.app/about</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://portfolio-web-pearl.vercel.app/projects</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://portfolio-web-pearl.vercel.app/contact</loc>
+    <changefreq>daily</changefreq>
+  </url>
+</urlset>
