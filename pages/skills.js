@@ -42,7 +42,7 @@ export default function Home() {
           {skillData.map((item, index) => {
             return (
               <motion.li key={index} custom={index} animate={controls}>
-                <img src={item.skill_img[0].url} />
+                <img src={item.skill_img[0].url} alt={`${item.skill_name}_icon`}/>
               </motion.li>
             )
           })}
