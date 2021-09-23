@@ -12,15 +12,15 @@ export default function About() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-      dispatch(fetchPeopleData(lang.lang));
-    }, [dispatch,lang.lang]);
-  
+        dispatch(fetchPeopleData(lang.lang));
+    }, [dispatch, lang.lang]);
+
     if (!peopleData) return null;
-    
+
     return (
         <div>
             <Head>
-                <title>{lang.about}</title>
+                <title>{lang.contact}</title>
                 <link rel="icon" href="/favicon.ico" />
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
