@@ -43,7 +43,7 @@ export default function Home() {
                 {projectData.map((item, index) => {
                     return (
                         <motion.div className=" p-4 mx-2 my-2 rounded-md border-2 shadow-md " custom={index} animate={controls}>
-                            <img src={item.img_1[0].url} alt="" className="rounded-md w-auto sm:h-3/6 h-2/6 object-fill mx-auto overflow-hidden" />
+                            <img src={item.img_1[0].url} alt={`${item.title}_image`} className="rounded-md w-auto sm:h-3/6 h-2/6 object-fill mx-auto overflow-hidden" />
                             <div className="text-white flex flex-col w-full text-center p-3 gap-y-4 rounded-md h-auto">
                                 <p className="font-bold text-xl text-black border-b-2 border-gray-500 rounded-xl">{item.title}</p>
                                 <p className="text-gray-600 text-base ">{item.description}</p>
