@@ -4,13 +4,13 @@ import Typical from 'react-typical';
 import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchPeopleData } from "../redux/people/peopleSlice";
-import { useTranslations } from "next-intl";
+import { useTranslations } from 'next-intl';
 import { useRouter } from "next/router";
 
 export default function About() {
     const peopleData = useSelector((state) => state.fetchData.peopleData);
     const dispatch = useDispatch();
-    const router= useRouter();
+    const router = useRouter();
     const language = router.locale;
     const t = useTranslations("about");
     const tTitle = useTranslations("title");
@@ -69,11 +69,11 @@ export default function About() {
     )
 }
 
-export function getStaticProps({locale}) {
+export function getStaticProps({ locale }) {
     return {
-      props: {
-        messages: require(`../lang/${locale}.json`),
-      }
+        props: {
+            messages: require(`../lang/${locale}.json`),
+        }
     };
-  } 
+}
 
