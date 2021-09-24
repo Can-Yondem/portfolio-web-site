@@ -4,16 +4,15 @@ import ActivityCalendar from "react-github-calendar";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchSkillsData } from "../redux/people/peopleSlice";
-
+import { useTranslations } from "next-intl"
 
 export default function Home() {
   const controls = useAnimation();
   const skillData = useSelector((state) => state.fetchData.skillsData);
   const dispatch = useDispatch();
+  const t = useTranslations("navbar");
+  const tTitle = useTranslations("title");
   
-  const lang = useSelector((state) => state.fetchData.language);
-
-
   useEffect(() => {
     dispatch(fetchSkillsData());
   }, [dispatch]);
@@ -30,7 +29,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>{lang.skills}</title>
+        <title>{tTitle("skills")}</title>
         <link rel="icon" href="/favicon.ico" />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -81,3 +80,12 @@ export default function Home() {
     </div>
   )
 }
+
+
+export function getStaticProps({locale}) {
+  return {
+    props: {
+      messages: require(`../lang/${locale}.json`),
+    }
+  };
+} 

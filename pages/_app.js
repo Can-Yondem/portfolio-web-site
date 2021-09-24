@@ -2,16 +2,19 @@ import 'tailwindcss/tailwind.css'
 import Layout from '../components/Layout'
 import { Provider } from 'react-redux';
 import { store } from '../redux/store';
+import { NextIntlProvider } from 'Next-intl';
 
 
 function MyApp({ Component, pageProps }) {
 
   return (
-    <Provider store={store}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </Provider>
+    <NextIntlProvider messages={pageProps.messages}>
+      <Provider store={store}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </Provider>
+    </NextIntlProvider>
   )
 }
 

@@ -4,17 +4,22 @@ import { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchProjectsData } from "../redux/people/peopleSlice";
+import { useTranslations } from "next-intl"
+import {useRouter} from 'next/router';
 
 export default function Home() {
     const controls = useAnimation();
     const projectData = useSelector((state) => state.fetchData.projectsData);
     const lang = useSelector((state) => state.fetchData.language);
-
+    const t = useTranslations("projects");
+    const tTitle = useTranslations("title");
     const dispatch = useDispatch();
+    const router = useRouter();
+    const language = router.locale;
 
     useEffect(() => {
-        dispatch(fetchProjectsData(lang.lang));
-    }, [dispatch, lang.lang]);
+        dispatch(fetchProjectsData(language));
+    }, [dispatch,language]);
 
     useEffect(() => {
         controls.start(i => ({
@@ -25,13 +30,10 @@ export default function Home() {
 
     if (!projectData) return null;
 
-
-
-
     return (
         <div>
             <Head>
-                <title>{lang.projects}</title>
+                <title>{tTitle("projects")}</title>
                 <link rel="icon" href="/favicon.ico" />
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -50,12 +52,12 @@ export default function Home() {
                                 <div className="mb-2">
                                     <Link href={item.link2} >
                                         <a target="blank" className="bg-green-400 border-2 border-green-400 sm:mr-5 mr-2 rounded-md sm:p-2 p-1 font-bold sm:text-base text-sm hover:bg-white hover:text-green-500 transition ease-in-out duration-300">
-                                            {lang.viewproject}
+                                            {t("viewproject")}
                                         </a>
                                     </Link>
                                     <Link href={item.link1} >
                                         <a target="blank" className="bg-green-400 border-2 border-green-400 rounded-md sm:p-2 p-1 font-bold sm:text-base text-sm hover:bg-white hover:text-green-500 transition ease-in-out duration-300">
-                                            {lang.knowmore}
+                                            {t("knowmore")}
                                         </a>
                                     </Link>
 
@@ -69,3 +71,12 @@ export default function Home() {
         </div>
     )
 }
+
+export function getStaticProps({locale}) {
+    return {
+      props: {
+        messages: require(`../lang/${locale}.json`),
+      }
+    };
+  } 
+

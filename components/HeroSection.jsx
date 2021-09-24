@@ -11,16 +11,20 @@ import { useEffect } from "react";
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchPeopleData } from "../redux/people/peopleSlice";
+import { useRouter } from 'next/router';
+
 
 
 export default function HeroSection() {
   const peopleData = useSelector((state) => state.fetchData.peopleData);
   const dispatch = useDispatch();
-  const lang = useSelector((state) => state.fetchData.language);
+  const router = useRouter();
+  const language = router.locale;
+
 
   useEffect(() => {
-    dispatch(fetchPeopleData(lang.lang));
-  }, [dispatch,lang.lang]);
+    dispatch(fetchPeopleData(language));
+  }, [dispatch,language]);
 
   if (!peopleData) return null;
 
@@ -76,3 +80,6 @@ export default function HeroSection() {
     </section>
   )
 }
+
+
+

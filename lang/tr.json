@@ -1,0 +1,43 @@
+{
+    "navbar": {
+        "home": "ANA SAYFA",
+        "about": "HAKKIMDA",
+        "skills": "YETENEKLERİM",
+        "projects": "PROJELERİM",
+        "contact": "İLETİŞİM"
+    },
+    "about": {
+        "downloadcv": "CV İndir",
+        "name": "Ad",        
+        "adress": "Adres",
+        "hobby" : "Hobi",
+        "age": "Yaş",
+        "phone": "Telefon",
+        "email": "EPosta"
+    },
+    "projects": {
+        "downloadcv": "CV İndir",
+        "viewproject": "Projeyi Göster",
+        "knowmore": "Daha Fazla"
+    },
+    "contact" : {
+        "name": "Ad",
+        "surname": "Soyad",
+        "adress": "Adres",
+        "age": "Yaş",
+        "phone": "Telefon",
+        "mail": "EPosta",
+        "title": "Başlık",
+        "writemessage": "Mesajınızı Yazın...",
+        "sendyourmessage": "Bana Mesaj Gönder",
+        "sendmessagebutton": "Mesaj Gönder"
+    },
+    "title": {
+        "home": "Ana Sayfa",
+        "about": "Hakkımda",
+        "skills": "Yeteneklerim",
+        "projects": "Projelerim",
+        "contact": "İletişim"
+    }
+
+}

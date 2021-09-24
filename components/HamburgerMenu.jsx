@@ -1,10 +1,10 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { FaHamburger } from 'react-icons/fa';
 import { motion } from "framer-motion";
 import Link from 'next/link';
 import ReactCountryFlag from "react-country-flag"
-import { setLanguage } from "../redux/people/peopleSlice";
-import { useSelector, useDispatch } from 'react-redux';
+import { useRouter } from "next/router"
+import { useTranslations } from "next-intl"
 
 
 function useWindowSize() {
@@ -43,11 +43,12 @@ function useWindowSize() {
 export default function HamburgerMenu() {
   const size = useWindowSize();
   const [isActive, setIsActive] = useState(false);
-  const lang = useSelector((state) => state.fetchData.language);
-  const dispatch = useDispatch();
+  const router = useRouter();
+  const language = router.locale;
+  const t = useTranslations("navbar");
 
   const changeLanguage = (language) => {
-    dispatch(setLanguage(language))
+    router.push(`${language}${router.route}`);
 }
 
   return (
@@ -58,37 +59,37 @@ export default function HamburgerMenu() {
           <ul className="flex flex-col mt-5 bg-gray-600 p-4 text-white font-bold rounded-lg text-center ">
             <li className="p-3 border-b-2 border-gray-50">
               <Link href="/">
-                <a>{lang.home}</a>
+                <a>{t("home")}</a>
               </Link>
             </li>
             <li className="p-3 border-b-2 border-gray-50">
               <Link href="/about">
-                <a>{lang.about}</a>
+                <a>{t("about")}</a>
               </Link>
             </li>
             <li className="p-3 border-b-2 border-gray-50">
               <Link href="/skills">
-                <a>{lang.skills}</a>
+                <a>{t("skills")}</a>
               </Link>
             </li>
             <li className="p-3 border-b-2 border-gray-50">
               <Link href="/projects">
-                <a>{lang.projects}</a>
+                <a>{t("projects")}</a>
               </Link>
             </li>
             <li className="p-3 border-b-2 border-gray-50">
               <Link href="/contact">
-                <a>{lang.contact}</a>
+                <a>{t("contact")}</a>
               </Link>
             </li>
             <li className="flex justify-center items-center gap-4 mt-3">
-              <button onClick={() => changeLanguage("en")}>
+              <button onClick={() => changeLanguage("en")} className={language === "en" && "border-b-2 border-green-500 pb-2 px-2"}>
                 <ReactCountryFlag countryCode="GB" svg style={{
                   fontSize: '2em',
                   lineHeight: '2em',
                 }} />
               </button>
-              <button onClick={() => changeLanguage("tr")}>
+              <button onClick={() => changeLanguage("tr")}  className={language === "tr" && "border-b-2 border-green-500 pb-2 px-2"}>
                 <ReactCountryFlag countryCode="TR" svg style={{
                   fontSize: '2em',
                   lineHeight: '2em',
@@ -101,3 +102,12 @@ export default function HamburgerMenu() {
     </div>
   )
 }
+
+
+export function getStaticProps({locale}) {
+  return {
+    props: {
+      messages: require(`../lang/${locale}.json`),
+    }
+  };
+} 

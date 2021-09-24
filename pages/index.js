@@ -1,17 +1,15 @@
 import Head from 'next/head'
 import HeroSection from "../components/HeroSection"
-import { useSelector } from 'react-redux';
-import Loading from '../components/Loading';
+import { useTranslations } from "next-intl"
 
 
 export default function Home() {
-  const lang = useSelector((state) => state.fetchData.language);
-  const loading = useSelector((state) => state.fetchData.isLoading);
+  const tTitle = useTranslations("title");
 
   return (
     <div>
       <Head>
-        <title>{lang.home}</title>
+        <title>{tTitle("home")}</title>
         <link rel="icon" href="/favicon.ico" />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -21,3 +19,11 @@ export default function Home() {
     </div>
   )
 }
+
+export function getStaticProps({locale}) {
+  return {
+    props: {
+      messages: require(`../lang/${locale}.json`),
+    }
+  };
+} 

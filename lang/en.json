@@ -1,0 +1,39 @@
+{
+    "navbar": {
+        "home": "HOME",
+        "about": "ABOUT",
+        "skills": "SKİLLS",
+        "projects": "PROJECTS",
+        "contact": "CONTACT"
+    },
+    "about": {
+        "downloadcv": "Download CV",
+        "name": "Name",
+        "hobby" : "Hobby",
+        "age": "Age",
+        "phone": "Phone",
+        "adress": "Adress",
+        "email": "Email"
+    },
+    "projects": {
+        "viewproject": "View Project",
+        "knowmore": "Know More"
+    },
+    "contact": {
+        "name": "Name",
+        "surname": "Surname",
+        "adress": "Adress",
+        "mail": "Email",
+        "title": "Title",
+        "writemessage": "Write Your Message",
+        "sendyourmessage": "Send Your Message",
+        "sendmessagebutton": "Send Message"
+    },
+    "title": {
+        "home": "Home",
+        "about": "About",
+        "skills": "Skills",
+        "projects": "Projects",
+        "contact": "Contact"
+    }
+}

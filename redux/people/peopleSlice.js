@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { postEmail, getPeople, getSkills,getProject } from "../../urls";
-import {lang_config} from "../../lang_config";
 
 export const fetchPeopleData = createAsyncThunk("people/getPeople", async (lang) => {
     console.log(lang);
@@ -31,15 +30,11 @@ export const peopleSlice = createSlice({
         skillsData: null,
         projectsData: null,
         isLoading: false,
-        language: lang_config["tr"]
     },
     reducers: {
         mailData: (state, action) => {
             state.userEmailData = action.payload
         },
-        setLanguage: (state, action) => {
-            state.language = lang_config[action.payload];
-        }
     },
     extraReducers: {
         [fetchPeopleData.fulfilled]: (state, action) => {
@@ -60,5 +55,5 @@ export const peopleSlice = createSlice({
 
 })
 
-export const { mailData,setLanguage } = peopleSlice.actions;
+export const { mailData } = peopleSlice.actions;
 export default peopleSlice.reducer;

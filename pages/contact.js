@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { postMail } from '../redux/people/peopleSlice';
 import { fetchPeopleData } from "../redux/people/peopleSlice";
+import { useTranslations } from "next-intl";
+import { useRouter } from 'next/router';
 
 
 export default function Home() {
@@ -17,7 +19,10 @@ export default function Home() {
     const [btnIsActive, setBtnIsActive] = useState(false);
     const dispatch = useDispatch();
     const peopleData = useSelector((state) => state.fetchData.peopleData);
-    const lang = useSelector((state) => state.fetchData.language);
+    const t = useTranslations("contact");
+    const tTitle = useTranslations("title");
+    const router = useRouter();
+    const language = router.locale;
 
     const sendMail = () => {
         dispatch(postMail({name, surname, title, email, message}));
@@ -29,8 +34,8 @@ export default function Home() {
     }
     
     useEffect(() => {
-        dispatch(fetchPeopleData(lang.lang));
-      }, [dispatch,lang.lang]);
+        dispatch(fetchPeopleData(language));
+      }, [dispatch,language]);
     
     useEffect(() => {
         name ? setBtnIsActive(true) : setBtnIsActive(false)
@@ -46,7 +51,7 @@ export default function Home() {
     return (
         <div className="min-h-screen">
             <Head>
-                <title>{lang.contact}</title>
+                <title>{tTitle("contact")}</title>
                 <link rel="icon" href="/favicon.ico" />
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -59,7 +64,7 @@ export default function Home() {
                     <div className="flex">
                         <BsPersonFill className="text-green-500 text-3xl mr-5 mt-1" />
                         <div>
-                            <p className="font-bold text-black">{lang.name}</p>
+                            <p className="font-bold text-black">{t("name")}</p>
                             <p className="text-gray-500">{peopleData.fullname}</p>
                         </div>
                     </div>
@@ -67,7 +72,7 @@ export default function Home() {
                     <div className="flex">
                         <FaMapMarkerAlt className="text-green-500 text-3xl mr-5 mt-1" />
                         <div>
-                            <p className="font-bold text-black">{lang.adress}</p>
+                            <p className="font-bold text-black">{t("adress")}</p>
                             <p className="text-gray-500 ">{peopleData.adress}</p>
                         </div>
                     </div>
@@ -75,26 +80,35 @@ export default function Home() {
                     <div className="flex">
                         <GrMail className="text-green-500 text-3xl mr-5 mt-1" />
                         <div>
-                            <p className="font-bold text-black">{lang.email}</p>
+                            <p className="font-bold text-black">{t("mail")}</p>
                             <p className="text-gray-500 ">{peopleData.email}</p>
                         </div>
                     </div>
                 </div>
 
                 <div className="lg:w-1/2 lg:ml-10 lg:my-0 my-10 sm:m-0 m-4">
-                    <p className="font-bold text-lg mb-4">{lang.sendyourmessage}</p>
+                    <p className="font-bold text-lg mb-4">{t("sendyourmessage")}</p>
                     <form className="flex flex-col gap-4" >
                         <div>
-                            <input className="border-2 border-gray-300 rounded-md p-1 pl-3 mr-5 sm:mb-0 mb-5 " type="text" placeholder={lang.name} value={name} onChange={(e) => { setName(e.target.value) }} />
-                            <input className="border-2 border-gray-300 rounded-md p-1 pl-3" type="text" placeholder={lang.surname} value={surname} onChange={(e) => setSurname(e.target.value)} />
+                            <input className="border-2 border-gray-300 rounded-md p-1 pl-3 mr-5 sm:mb-0 mb-5 " type="text" placeholder={t("name")} value={name} onChange={(e) => { setName(e.target.value) }} />
+                            <input className="border-2 border-gray-300 rounded-md p-1 pl-3" type="text" placeholder={t("surname")} value={surname} onChange={(e) => setSurname(e.target.value)} />
                         </div>
-                        <input className="border-2 border-gray-300 rounded-md p-1 pl-3 w-full" type="email" placeholder={lang.email} value={email} onChange={(e) => setEmail(e.target.value)} />
-                        <input className="border-2 border-gray-300 rounded-md p-1 pl-3 w-full" type="text" placeholder={lang.title} value={title} onChange={(e) => setTitle(e.target.value)} />
-                        <textarea name="" id="" cols="30" rows="10" className="border-2 border-gray-300 rounded-md pl-3 pt-2 w-full" placeholder={lang.writemessage} value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
+                        <input className="border-2 border-gray-300 rounded-md p-1 pl-3 w-full" type="email" placeholder={t("email")} value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <input className="border-2 border-gray-300 rounded-md p-1 pl-3 w-full" type="text" placeholder={t("title")} value={title} onChange={(e) => setTitle(e.target.value)} />
+                        <textarea name="" id="" cols="30" rows="10" className="border-2 border-gray-300 rounded-md pl-3 pt-2 w-full" placeholder={t("writemessage")} value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
                     </form>
-                    <button className="bg-green-500 border-2 border-green-500 text-white p-2 font-semibold mt-4 rounded-md hover:bg-white hover:text-green-500 transition ease-in-out duration-300 disabled:bg-gray-300 disabled:border-gray-300 disabled:cursor-not-allowed disabled:text-gray-400" disabled={!btnIsActive} onClick={sendMail} >{lang.sendmessagebutton}</button>
+                    <button className="bg-green-500 border-2 border-green-500 text-white p-2 font-semibold mt-4 rounded-md hover:bg-white hover:text-green-500 transition ease-in-out duration-300 disabled:bg-gray-300 disabled:border-gray-300 disabled:cursor-not-allowed disabled:text-gray-400" disabled={!btnIsActive} onClick={sendMail} >{t("sendmessagebutton")}</button>
                 </div>
             </div>
         </div>
     )
 }
+
+
+export function getStaticProps({locale}) {
+    return {
+      props: {
+        messages: require(`../lang/${locale}.json`),
+      }
+    };
+  } 
