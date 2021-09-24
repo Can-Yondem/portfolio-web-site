@@ -68,10 +68,12 @@ export default function Home({ page, textcolor }) {
     )
 }
 
-export function getProps({locale}) {
+export function getStaticProps ({locale}) {
     return {
       props: {
         messages: require(`../lang/${locale}.json`),
       }
     };
   } 
+
+
